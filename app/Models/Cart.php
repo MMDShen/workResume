@@ -15,4 +15,13 @@ class Cart extends Model
         'food_id'
     ];
 
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
+    public function food()
+    {
+        return $this->belongsTo(Food::class);
+    }
+
 }

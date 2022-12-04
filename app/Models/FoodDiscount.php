@@ -15,4 +15,9 @@ class FoodDiscount extends Model
         'label',
         'factor'
     ];
+
+    public function food()
+    {
+        return $this->hasMany(Food::class);
+    }
 }

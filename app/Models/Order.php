@@ -17,4 +17,13 @@ class Order extends Model
         'location',
         'about_me',
     ];
+
+    public function cart()
+    {
+        return $this->hasMany(Cart::class);
+    }
+    public function comment()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

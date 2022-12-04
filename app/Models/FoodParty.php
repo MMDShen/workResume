@@ -17,4 +17,9 @@ class FoodParty extends Model
         'max',
         'count'
     ];
+
+    public function food()
+    {
+        return $this->hasMany(Food::class);
+    }
 }

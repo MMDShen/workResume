@@ -20,4 +20,28 @@ class Food extends Model
         'restaurant_id'
     ];
 
+    public function cart()
+    {
+        return $this->hasMany(Cart::class);
+    }
+    public function Comment()
+    {
+        return $this->hasMany(Comment::class);
+    }
+    public function foodType()
+    {
+        return $this->belongsTo(FoodType::class,'food_type','type');
+    }
+    public function foodDiscunt()
+    {
+        return $this->belongsTo(FoodDiscount::class);
+    }
+    public function restaurant()
+    {
+        return $this->belongsTo(Restaurant::class);
+    }
+    public function foodParty()
+    {
+        return $this->belongsTo(FoodParty::class);
+    }
 }

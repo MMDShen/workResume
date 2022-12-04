@@ -13,4 +13,6 @@ class Banner extends Model
         'label',
         'value'
     ];
+
+
 }
