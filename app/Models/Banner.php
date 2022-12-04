@@ -14,5 +14,9 @@ class Banner extends Model
         'value'
     ];
 
+    public function restaurant()
+    {
+        return $this->belongsTo(Restaurant::class);
+    }
 
 }
