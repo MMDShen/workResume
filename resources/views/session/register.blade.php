@@ -74,6 +74,12 @@
                     <p class="text-danger text-xs mt-2">{{ $message }}</p>
                   @enderror
                 </div>
+                  <div class="mb-3">
+                      <input type="text" class="form-control" placeholder="Phone" name="phone" id="phone" aria-label="Phone" aria-describedby="phone" value="{{ old('phone') }}">
+                      @error('phone')
+                      <p class="text-danger text-xs mt-2">{{ $message }}</p>
+                      @enderror
+                  </div>
                 <div class="mb-3">
                   <input type="email" class="form-control" placeholder="Email" name="email" id="email" aria-label="Email" aria-describedby="email-addon" value="{{ old('email') }}">
                   @error('email')
@@ -86,6 +92,15 @@
                     <p class="text-danger text-xs mt-2">{{ $message }}</p>
                   @enderror
                 </div>
+                  <div class="mb-3">
+                        <select class="form-control" name="role">
+                            <option value="1">Seller</option>
+                            <option value="0">Admin</option>
+                        </select>
+                      @error('role')
+                      <p class="text-danger text-xs mt-2">{{ $message }}</p>
+                      @enderror
+                  </div>
                 <div class="form-check form-check-info text-left">
                   <input class="form-check-input" type="checkbox" name="agreement" id="flexCheckDefault" checked>
                   <label class="form-check-label" for="flexCheckDefault">
