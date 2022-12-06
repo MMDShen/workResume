@@ -27,6 +27,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [HomeController::class, 'home']);
 
 
+
 	Route::get('billing', function () {
 		return view('billing');
 	})->name('billing');

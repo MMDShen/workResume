@@ -9,40 +9,57 @@ use App\Http\Controllers\Admin\RestaurantTypeController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::group(['middleware' => 'admin'], function () {
-    Route::get('/food-type-tables',[FoodTypeController::class, 'create'] );
-    Route::post('/food-type-tables',[FoodTypeController::class, 'read'] );
-    Route::patch('/food-type-tables',[FoodTypeController::class, 'update'] );
-    Route::delete('/food-type-tables',[FoodTypeController::class, 'delete'] );
+Route::prefix('/food-type-tables')->group(function () {
 
-    Route::get('/restaurant-type-tables',[RestaurantTypeController::class, 'create'] );
-    Route::post('/restaurant-type-tables',[RestaurantTypeController::class, 'read'] );
-    Route::patch('/restaurant-type-tables',[RestaurantTypeController::class, 'update'] );
-    Route::delete('/restaurant-type-tables',[RestaurantTypeController::class, 'delete'] );
+    Route::get('/',[FoodTypeController::class, 'create'] );
+    Route::post('/',[FoodTypeController::class, 'read'] );
+    Route::patch('/',[FoodTypeController::class, 'update'] );
+    Route::delete('/',[FoodTypeController::class, 'delete'] );
+});
 
-    Route::get('/food-discount-tables',[FoodDiscountController::class, 'create'] );
-    Route::post('/food-discount-tables',[FoodDiscountController::class, 'read'] );
-    Route::patch('/food-discount-tables',[FoodDiscountController::class, 'update'] );
-    Route::delete('/food-discount-tables',[FoodDiscountController::class, 'delete'] );
+Route::prefix('/restaurant-type-tables')->group(function () {
 
-    Route::get('/food-party-tables',[FoodPartyController::class, 'create'] );
-    Route::post('/food-party-tables',[FoodPartyController::class, 'read'] );
-    Route::patch('/food-party-tables',[FoodPartyController::class, 'update'] );
-    Route::delete('/food-party-tables',[FoodPartyController::class, 'delete'] );
+    Route::get('/',[RestaurantTypeController::class, 'create'] );
+    Route::post('/',[RestaurantTypeController::class, 'read'] );
+    Route::patch('/',[RestaurantTypeController::class, 'update'] );
+    Route::delete('/',[RestaurantTypeController::class, 'delete'] );
+});
 
-    Route::get('/banner-tables',[BannerController::class, 'create'] );
-    Route::post('/banner-tables',[BannerController::class, 'read'] );
-    Route::patch('/banner-tables',[BannerController::class, 'update'] );
-    Route::delete('/banner-tables',[BannerController::class, 'delete'] );
+Route::prefix('/food-discount-tables')->group(function () {
 
-    Route::get('/comment-tables',[CommentController::class, 'create'] );
-    Route::post('/comment-tables',[CommentController::class, 'read'] );
-    Route::patch('/comment-tables',[CommentController::class, 'update'] );
-    Route::delete('/comment-tables',[CommentController::class, 'delete'] );
+    Route::get('/',[FoodDiscountController::class, 'create'] );
+    Route::post('/',[FoodDiscountController::class, 'read'] );
+    Route::patch('/',[FoodDiscountController::class, 'update'] );
+    Route::delete('/',[FoodDiscountController::class, 'delete'] );
+});
 
-    Route::get('/dashboard',function (){
+Route::prefix('/food-party-tables')->group(function () {
+
+    Route::get('/',[FoodPartyController::class, 'create'] );
+    Route::post('/',[FoodPartyController::class, 'read'] );
+    Route::patch('/',[FoodPartyController::class, 'update'] );
+    Route::delete('/',[FoodPartyController::class, 'delete'] );
+});
+
+Route::prefix('/banner-tables')->group(function () {
+
+    Route::get('/',[BannerController::class, 'create'] );
+    Route::post('/',[BannerController::class, 'read'] );
+    Route::patch('/',[BannerController::class, 'update'] );
+    Route::delete('/',[BannerController::class, 'delete'] );
+});
+
+Route::prefix('/comment-tables')->group(function () {
+
+    Route::get('/',[CommentController::class, 'create'] );
+    Route::post('/',[CommentController::class, 'read'] );
+    Route::patch('/',[CommentController::class, 'update'] );
+    Route::delete('/',[CommentController::class, 'delete'] );
+});
+
+Route::prefix('/dashboard/admin')->group(function () {
+
+    Route::get('/',function (){
         return view('dashboard');
-    } );
-
-
+    })->name('dashboard');
 });
