@@ -20,9 +20,11 @@ class Seller
         if(! Auth::check()){
             return redirect('login');
         }
+
         if (! $request->user()->role == '1') {
             return redirect('/dashboard')->with('you dont have permission'); // <- later add its notification
         }
+
         return $next($request);
     }
 }
