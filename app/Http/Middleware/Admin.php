@@ -19,9 +19,8 @@ class Admin
         if(! Auth::check()){
             return redirect('login');
         }
-
-        if (! $request->user()->role == '0') {
-            return redirect('/dashboard')->with('you dont have permission');
+        if ($request->user()->role != '0' && $request->user()->role != '1') {
+            return redirect('/welcome')->with('you dont have permission'); // <- needs work
         }
 
         return $next($request);

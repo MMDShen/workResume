@@ -24,10 +24,10 @@ class FoodPartyRequest extends FormRequest
     public function rules()
     {
         return [
-            'label' => 'string|min:3|max:70',
-            'factor'=> 'required',
-            'max'=> 'required|integer',
-            'count'=> 'required|integer',
+            'label' => 'string|min:3|max:70|unique:foods_party',
+            'factor'=> 'nullable',
+            'max'=> 'nullable|integer',
+            'count'=> 'nullable|integer',
         ];
     }
 }

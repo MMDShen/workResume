@@ -10,4 +10,7 @@ class OrderController extends Controller
     public function create(){
         return view('dashboard');
     }
+    public function read(){}
+    public function update(){}
+    public function delete(){}
 }
