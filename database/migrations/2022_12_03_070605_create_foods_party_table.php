@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('label');
             $table->float('factor');
             $table->integer('max');
-            $table->integer('count');
+            $table->integer('count')->default(0);
             $table->timestamps();
         });
     }

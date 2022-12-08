@@ -9,55 +9,61 @@ use App\Http\Controllers\Admin\RestaurantTypeController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::prefix('/food-type-tables')->group(function () {
+Route::prefix('/food-type-table')->group(function () {
 
-    Route::get('/',[FoodTypeController::class, 'create'] );
-    Route::post('/',[FoodTypeController::class, 'read'] );
-    Route::patch('/',[FoodTypeController::class, 'update'] );
-    Route::delete('/',[FoodTypeController::class, 'delete'] );
+    Route::post('/',[FoodTypeController::class, 'create'] );
+    Route::get('/',[FoodTypeController::class, 'read'] );
+    Route::get('/edit/{id}',[FoodTypeController::class, 'edit'] );
+    Route::patch('/{id}',[FoodTypeController::class, 'update'] );
+    Route::delete('/{id}',[FoodTypeController::class, 'delete'] );
 });
 
-Route::prefix('/restaurant-type-tables')->group(function () {
+Route::prefix('/restaurant-type-table')->group(function () {
 
-    Route::get('/',[RestaurantTypeController::class, 'create'] );
-    Route::post('/',[RestaurantTypeController::class, 'read'] );
-    Route::patch('/',[RestaurantTypeController::class, 'update'] );
-    Route::delete('/',[RestaurantTypeController::class, 'delete'] );
+    Route::post('/',[RestaurantTypeController::class, 'create'] );
+    Route::get('/',[RestaurantTypeController::class, 'read'] );
+    Route::get('/edit/{id}',[RestaurantTypeController::class, 'edit'] );
+    Route::patch('/{id}',[RestaurantTypeController::class, 'update'] );
+    Route::delete('/{id}',[RestaurantTypeController::class, 'delete'] );
 });
 
-Route::prefix('/food-discount-tables')->group(function () {
+Route::prefix('/food-discount-table')->group(function () {
 
-    Route::get('/',[FoodDiscountController::class, 'create'] );
-    Route::post('/',[FoodDiscountController::class, 'read'] );
-    Route::patch('/',[FoodDiscountController::class, 'update'] );
-    Route::delete('/',[FoodDiscountController::class, 'delete'] );
+    Route::post('/',[FoodDiscountController::class, 'create'] );
+    Route::get('/',[FoodDiscountController::class, 'read'] );
+    Route::get('/edit/{id}',[FoodDiscountController::class, 'edit'] );
+    Route::patch('/{id}',[FoodDiscountController::class, 'update'] );
+    Route::delete('/{id}',[FoodDiscountController::class, 'delete'] );
 });
 
-Route::prefix('/food-party-tables')->group(function () {
+Route::prefix('/food-party-table')->group(function () {
 
-    Route::get('/',[FoodPartyController::class, 'create'] );
-    Route::post('/',[FoodPartyController::class, 'read'] );
-    Route::patch('/',[FoodPartyController::class, 'update'] );
-    Route::delete('/',[FoodPartyController::class, 'delete'] );
+    Route::post('/',[FoodPartyController::class, 'create'] );
+    Route::get('/',[FoodPartyController::class, 'read'] );
+    Route::get('/edit/{id}',[FoodPartyController::class, 'edit'] );
+    Route::patch('/{id}',[FoodPartyController::class, 'update'] );
+    Route::delete('/{id}',[FoodPartyController::class, 'delete'] );
 });
 
-Route::prefix('/banner-tables')->group(function () {
+Route::prefix('/banner-table')->group(function () {
 
-    Route::get('/',[BannerController::class, 'create'] );
-    Route::post('/',[BannerController::class, 'read'] );
-    Route::patch('/',[BannerController::class, 'update'] );
-    Route::delete('/',[BannerController::class, 'delete'] );
+    Route::post('/',[BannerController::class, 'create'] );
+    Route::get('/',[BannerController::class, 'read'] );
+    Route::get('/edit/{id}',[BannerController::class, 'edit'] );
+    Route::patch('/{id}',[BannerController::class, 'update'] );
+    Route::delete('/{id}',[BannerController::class, 'delete'] );
 });
 
-Route::prefix('/comment-tables')->group(function () {
+Route::prefix('/comment-table')->group(function () {
 
-    Route::get('/',[CommentController::class, 'create'] );
-    Route::post('/',[CommentController::class, 'read'] );
-    Route::patch('/',[CommentController::class, 'update'] );
-    Route::delete('/',[CommentController::class, 'delete'] );
+    Route::post('/',[CommentController::class, 'create'] );
+    Route::get('/',[CommentController::class, 'read'] );
+    Route::get('/edit/{id}',[CommentController::class, 'edit'] );
+    Route::patch('/{id}',[CommentController::class, 'update'] );
+    Route::delete('/{id}',[CommentController::class, 'delete'] );
 });
 
-Route::prefix('/dashboard/admin')->group(function () {
+Route::prefix('/dashboard')->group(function () {
 
     Route::get('/',function (){
         return view('dashboard');

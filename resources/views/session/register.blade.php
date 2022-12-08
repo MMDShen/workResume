@@ -95,7 +95,7 @@
                   <div class="mb-3">
                         <select class="form-control" name="role">
                             <option value="1">Seller</option>
-                            <option value="0">Admin</option>
+                            <option value="0" style="{{$class}}">Admin</option>
                         </select>
                       @error('role')
                       <p class="text-danger text-xs mt-2">{{ $message }}</p>
