@@ -24,7 +24,7 @@ class FoodDiscountRequest extends FormRequest
     public function rules()
     {
         return [
-            'label' => 'string|min:3|max:70',
+            'label' => 'string|min:3|max:70|unique:foods_discount',
             'factor'=> 'required'
         ];
     }
