@@ -37,14 +37,13 @@
                             @endif
 
 
-
                             <form class="m-auto w-75 justify-content-center d-flex flex-wrap gap-2"
-                                  action="{{ url('banner-table/') }}" method="POST">
+                                  action="{{ url('banner-table/') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                //
-                                <input id="value" type="text" name="value" placeholder="Enter Value Please">
-                                <input type="submit" value="Done">
-                                //
+
+                                <input id="value" type="file" name="value" placeholder="Enter Value Please">
+                                <input class="btn-primary rounded" type="submit" value="Done">
+
                             </form>
 
                             <div class="table-responsive p-0">
@@ -55,10 +54,13 @@
                                             ID
                                         </th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Image
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             User ID
                                         </th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Edit
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            User Name
                                         </th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Delete
@@ -82,32 +84,27 @@
                                                 <td>
                                                     <div class="d-flex px-2 py-1 justify-content-start">
                                                         <div class="d-flex flex-column justify-content-left">
-                                                            <p class="mb-0 text-sm">{{$type->value}}</p>
+                                                            <img class="mb-0 border rounded-circle" style="width:66px;height:66px;"
+                                                            {{$type->label}}=" @if($type->label == 'src'){{url('images/'.$type->value)}}
+                                                            @else {{$type->value}} @endif" />
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1 justify-content-start">
                                                         <div class="d-flex flex-column justify-content-left">
-                                                            <p class="mb-0 text-sm">{{$type->restaurant->user_id}}</p>
+                                                            <p class="mb-0 text-sm"> {{ Auth::user()->id }} </p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1 justify-content-start">
                                                         <div class="d-flex flex-column justify-content-left">
-                                                            <p class="mb-0 text-sm">{{$type->restaurant->user->name}}</p>
-                                                        </div>
-                                                    </div>
-                                                </td>
-
-                                                <td>
-                                                    <div class="d-flex px-2 py-1 justify-content-center">
-                                                        <div class="d-flex px-2 py-1 justify-content-center">
-
-                                                            <div class="d-flex flex-column justify-content-center">
-                                                                <a href="{{ url('/banner-table/edit/'.$type->id) }}"
-                                                                   class="btn btn-primary">Edit</a></div>
+                                                            <p class="mb-0 text-sm">@if(isset($type->restaurant->user_id))
+                                                                    {{$type->restaurant->user->name}}
+                                                                @else
+                                                                    {{'Admin'}}
+                                                                @endif</p>
                                                         </div>
                                                     </div>
                                                 </td>

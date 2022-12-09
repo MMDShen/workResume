@@ -42,7 +42,7 @@
                                   action="{{ url('food-type-table/') }}" method="POST">
                                 @csrf
                                 <input id="type" type="text" name="type" placeholder="Enter Type Please">
-                                <input type="submit" value="Done">
+                                <input class="btn-primary rounded" type="submit" value="Done">
 
                             </form>
 

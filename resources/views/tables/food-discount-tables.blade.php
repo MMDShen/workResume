@@ -43,7 +43,7 @@
                                 @csrf
                                 <input id="label" type="text" name="label" placeholder="Enter Label Please">
                                 <input id="factor" type="text" name="factor" placeholder="Enter Factor Please">
-                                <input type="submit" value="Done">
+                                <input class="btn-primary rounded" type="submit" value="Done">
 
                             </form>
 

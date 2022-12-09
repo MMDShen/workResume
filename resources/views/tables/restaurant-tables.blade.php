@@ -37,12 +37,31 @@
                             @endif
 
 
-
-                            <form class="m-auto w-75 justify-content-center d-flex flex-wrap gap-2"
-                                  action="{{ url('banner-table/') }}" method="POST">
+                            <form class="m-auto justify-content-center d-flex flex-wrap w-50"
+                                  action="{{ url('restaurant/') }}" method="POST">
                                 @csrf
-                                <input id="value" type="text" name="value" placeholder="Enter Value Please">
-                                <input type="submit" value="Done">
+                                <div class="flex-row w-100">
+                                <input class="w-100" id="title" type="text" name="title" placeholder="Enter Title Please">
+                                </div>
+                                <div class="flex-row w-100">
+                                    <input class="w-100" id="address" type="text" name="address" placeholder="Enter Address Please">
+                                </div>
+                                <div class="flex-row w-100">
+                                <input class="w-100" id="image" type="text" name="image" placeholder="Enter URL Please">
+                                </div>
+                                <div class="flex-row w-100">
+                                <select class="w-100" id="type" name="restaurant_type">
+                                    @foreach($categories = \App\Models\RestaurantType::get() as $type)
+                                        <option selected>Select a Category Please</option>
+                                        <option value="{{$type->type}}">{{$type->type}}</option>
+                                    @endforeach
+                                </select>
+                                </div>
+                                <div class="d-flex flex-row w-100 justify-content-lg-between">
+                                    <input class="w-45" id="longitude" type="number" name="longitude" placeholder="Enter Longitude Please">
+                                    <input class="w-45" id="latitude" type="number" name="latitude" placeholder="Enter Latitude Please">
+                                </div>
+                                <input class="mt-1 btn-primary rounded" type="submit" value="Done">
 
                             </form>
 
@@ -54,10 +73,19 @@
                                             ID
                                         </th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Label
+                                            Title
                                         </th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Factor
+                                            Type
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Address
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Status
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Score
                                         </th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Edit
@@ -70,7 +98,6 @@
                                     <tbody>
 
                                     @if(count($types) != 0)
-
                                         @foreach($types as $type)
                                             <tr>
                                                 <td>
@@ -83,15 +110,37 @@
                                                 </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1 justify-content-start">
-                                                        <div class="d-flex flex-column justify-content-left">
-                                                            <p class="mb-0 text-sm">{{$type->label}}</p>
+                                                        <div class="d-flex flex-column justify-content-start">
+                                                            <p class="mb-0 text-sm">{{$type->title}}</p>
                                                         </div>
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div class="d-flex px-2 py-1 justify-content-start">
-                                                        <div class="d-flex flex-column justify-content-left">
-                                                            <p class="mb-0 text-sm">{{$type->factor}}</p>
+                                                        <div class="d-flex flex-column justify-content-start">
+                                                            <p class="mb-0 text-sm">{{$type->restaurant_type}}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1 justify-content-start">
+                                                        <div class="d-flex flex-column justify-content-start">
+                                                            <p class="mb-0 text-sm">{{$type->address}}</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1 justify-content-start">
+                                                        <div class="d-flex flex-column justify-content-start">
+                                                            <p class="mb-0 text-sm">@if($type->is_open == 1){{'Open'}} @else
+                                                                {{'Close'}} @endif </p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1 justify-content-start">
+                                                        <div class="d-flex flex-column justify-content-start">
+                                                            <p class="mb-0 text-sm">{{$type->score}}</p>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -100,7 +149,7 @@
                                                         <div class="d-flex px-2 py-1 justify-content-center">
 
                                                             <div class="d-flex flex-column justify-content-center">
-                                                                <a href="{{ url('/food-discount-table/edit/'.$type->id) }}"
+                                                                <a href="{{ url('/restaurant/edit/'.$type->id) }}"
                                                                    class="btn btn-primary">Edit</a></div>
                                                         </div>
                                                     </div>
@@ -108,7 +157,7 @@
                                                 <td>
                                                     <div class="d-flex px-2 py-1 justify-content-center">
 
-                                                        <form action="{{ url('food-discount-table/'.$type->id) }}"
+                                                        <form action="{{ url('restaurant/'.$type->id) }}"
                                                               method="POST">
                                                             @csrf
                                                             @method('DELETE')
