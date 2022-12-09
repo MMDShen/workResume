@@ -49,8 +49,6 @@ Route::prefix('/banner-table')->group(function () {
 
     Route::post('/',[BannerController::class, 'create'] );
     Route::get('/',[BannerController::class, 'read'] );
-    Route::get('/edit/{id}',[BannerController::class, 'edit'] );
-    Route::patch('/{id}',[BannerController::class, 'update'] );
     Route::delete('/{id}',[BannerController::class, 'delete'] );
 });
 

@@ -24,7 +24,7 @@ class BannerRequest extends FormRequest
     public function rules()
     {
         return [
-            'label' => 'required',
+            'label' => 'in:src,href',
             'value' => 'required',
         ];
     }

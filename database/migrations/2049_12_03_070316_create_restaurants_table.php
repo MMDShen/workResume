@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('address');
-            $table->float('longitude');
-            $table->float('latitude');
+            $table->double('longitude',10,7);
+            $table->double('latitude',10,7);
             $table->string('restaurant_type');
             $table->boolean('is_open')->default(0);
-            $table->integer('score');
+            $table->integer('score')->default(0);
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->foreign('user_id')->on('users')->references('id');

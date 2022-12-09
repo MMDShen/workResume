@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('banners', function (Blueprint $table) {
             $table->id();
-            $table->enum('label',['name','href']);
+            $table->enum('label',['src','href']);
             $table->string('value');
             $table->timestamps();
         });

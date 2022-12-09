@@ -30,6 +30,7 @@ class RestaurantRequest extends FormRequest
             'latitude' => 'required',
             'restaurant_type' => 'required',
             'is_open' => 'nullable',
+            'score' => 'nullable',
         ];
     }
 }

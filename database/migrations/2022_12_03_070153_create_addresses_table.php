@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('address');
-            $table->float('longitude');
-            $table->float('latitude');
+            $table->double('longitude',10,7);
+            $table->double('latitude',10,7);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->on('users')->references('id');
         });
