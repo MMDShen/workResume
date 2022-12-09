@@ -77,7 +77,13 @@ return [
             'schema' => 'public',
             'sslmode' => 'prefer',
         ],
-
+        'redis' => [
+            'driver' => 'redis',
+            'connection' => 'default',
+            'queue' => '{default}',
+            'retry_after' => 90,
+            'block_for' => 5,
+        ],
         'sqlsrv' => [
             'driver' => 'sqlsrv',
             'url' => env('DATABASE_URL'),
